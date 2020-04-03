@@ -8,6 +8,19 @@ import (
 	"strings"
 )
 
+// Globals
+var hadError bool = false
+
+// Error function prints error to the Std Error
+func Error(line int, message string) {
+	report(line, "", message)
+}
+
+func report(line int, where string, message string) {
+	fmt.Fprintf(os.Stderr, "[line %d] Error %s : %s", line, where, message)
+	hadError = true
+}
+
 func run(source string) {
 	fmt.Println(source)
 }
@@ -18,6 +31,9 @@ func runFile(path string) {
 		panic(err)
 	}
 	run(string(data))
+	if hadError {
+		os.Exit(65)
+	}
 }
 
 func runPrompt() {
@@ -33,6 +49,7 @@ func runPrompt() {
 			os.Exit(0)
 		}
 		run(line)
+		hadError = false
 	}
 }
 
