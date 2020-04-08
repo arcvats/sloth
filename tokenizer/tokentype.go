@@ -1,12 +1,12 @@
 package tokenizer
 
-// Token type
-type Token int
+// TokenType type
+type TokenType int
 
 // Token types
 const (
 	// Single Character Tokens
-	LEFTPAREN Token = iota + 1
+	LEFTPAREN TokenType = iota + 1
 	RIGHTPAREN
 	LEFTBRACE
 	RIGHTBRACE

@@ -6,6 +6,8 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
+
+	tokenizer "./tokenizer"
 )
 
 // Globals
@@ -22,7 +24,8 @@ func report(line int, where string, message string) {
 }
 
 func run(source string) {
-	fmt.Println(source)
+	t := tokenizer.NewToken(tokenizer.EOF, "", "", 23)
+	fmt.Println(t.ToString())
 }
 
 func runFile(path string) {
